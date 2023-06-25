@@ -1,0 +1,7 @@
+eth-brownie==1.19.2
+eth_abi==2.2.0
+eth_utils==1.10.0
+pytest==6.2.5
+python-dotenv==1.0.0
+setuptools==57.4.0
+web3==5.31.1
