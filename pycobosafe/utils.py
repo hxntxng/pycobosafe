@@ -5,7 +5,7 @@ import warnings
 
 import eth_abi
 import eth_utils
-from brownie import Contract, accounts, network
+from brownie import Contract, accounts, network, web3
 from brownie.network.contract import _ContractMethod, _get_tx
 
 BASE = os.path.dirname(__file__)
@@ -124,3 +124,18 @@ def _build_tx(self, *args):
 
 
 _ContractMethod.build = _build_tx
+
+SCAN_URLS = {
+    1: "https://etherscan.io/address/",  # mainnet
+    10: "https://optimistic.etherscan.io/address/",  # optimism
+    56: "https://bscscan.com/address/",  # bsc
+    137: "https://polygonscan.com/address/",  # polygon
+    42161: "https://arbiscan.io/address/",  # arbitrum
+    43114: "https://snowtrace.io/address/",  # avax
+}
+
+
+def get_address_url(addr):
+    chainid = web3.chain_id
+    assert chainid in SCAN_URLS, f"Unsupport chain {chainid} {get_current_chain()}"
+    return SCAN_URLS[chainid] + str(addr)

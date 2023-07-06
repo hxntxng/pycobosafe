@@ -10,6 +10,7 @@ from .utils import (
     FACTORY_ADDRESS,
     b32,
     connect_new_chain,
+    get_address_url,
     get_all_support_chains,
     get_current_chain,
     load_account,
@@ -132,6 +133,14 @@ class CoboSafeConsole(cmd.Cmd):
         py <expr>: Eval python script.
         """
         print(eval(arg.strip()))
+
+    def do_url(self, arg):
+        """
+        url <address>: Open XXXScan URL.
+        """
+        url = get_address_url(arg)
+        print(url)
+        self.do_sh(f"open {url}")
 
     # Network and account.
 
