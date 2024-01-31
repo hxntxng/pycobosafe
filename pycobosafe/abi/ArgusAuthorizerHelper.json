@@ -1,0 +1,155 @@
+[
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "authorizerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_swapInTokens",
+          "type": "address[]"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_swapOutTokens",
+          "type": "address[]"
+        }
+      ],
+      "name": "setDexAuthorizerParams",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "authorizerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_contracts",
+          "type": "address[]"
+        },
+        {
+          "internalType": "string[][]",
+          "name": "funcLists",
+          "type": "string[][]"
+        }
+      ],
+      "name": "setFuncAuthorizerParams",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "authorizerAddress",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "receiver",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct TransferAuthorizer.TokenReceiver[]",
+          "name": "tokenReceivers",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "setTransferAuthorizerParams",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "authorizerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_swapInTokens",
+          "type": "address[]"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_swapOutTokens",
+          "type": "address[]"
+        }
+      ],
+      "name": "unsetDexAuthorizerParams",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "authorizerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address[]",
+          "name": "_contracts",
+          "type": "address[]"
+        },
+        {
+          "internalType": "string[][]",
+          "name": "funcLists",
+          "type": "string[][]"
+        }
+      ],
+      "name": "unsetFuncAuthorizerParams",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "authorizerAddress",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "receiver",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct TransferAuthorizer.TokenReceiver[]",
+          "name": "tokenReceivers",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "unsetTransferAuthorizerParams",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+  
