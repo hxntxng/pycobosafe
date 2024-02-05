@@ -84,8 +84,7 @@ class ArgusRootAuthorizer(BaseAuthorizer):
                 role_list += FlatRoleManager(role_mngr).get_all_roles()
         except Exception:
             pass
-
-        return role_list
+        return set(role_list)
 
     def get_authorizers(self, role, delegatecall=False):
         return self.contract.getAllAuthorizers(delegatecall, b32(role))
