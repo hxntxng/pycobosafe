@@ -5,6 +5,8 @@ A Python SDK for interactions with [Cobo Safe](https://github.com/coboglobal/cob
 # Installation
 
 ```sh
+cd pycobosafe
+export PYTHONPATH=.
 pip install git+https://github.com/coboglobal/pycobosafe
 ```
 
