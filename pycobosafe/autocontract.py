@@ -40,3 +40,10 @@ def dump(addr, full=False):
         obj.dump(full)
     else:
         print("No valid IVersion contract.")
+
+def export_config(addr):
+    obj = convert(addr)
+    if obj:
+        obj.export_config(obj.name)
+    else:
+        print("No valid IVersion contract.")

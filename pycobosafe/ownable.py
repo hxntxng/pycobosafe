@@ -1,5 +1,5 @@
 from brownie import network
-
+import yaml
 from .utils import ZERO_ADDRESS, load_contract, s32
 
 
@@ -48,6 +48,19 @@ class BaseOwnable(object):
                 print("Pending owner:", pending)
         except Exception:
             pass
+    
+    def export_config(self, filename=None):
+        if filename == None:
+            filename = self.contract.name
+        f = open(f'pycobosafe/{filename}_export_config.yaml','w')
+        try:
+            owner = self.owner
+            pending = self.pending_owner
+            if pending != ZERO_ADDRESS:
+                owner = pending
+        except Exception:
+            pass
+        yaml.dump({"Name":self.name, "Address":self.address, "Version":self.version, "Owner":owner}, f)
 
 
 class ERC20(object):

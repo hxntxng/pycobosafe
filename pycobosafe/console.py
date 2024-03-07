@@ -267,6 +267,14 @@ class CoboSafeConsole(cmd.Cmd):
         from .autocontract import dump
 
         dump(addr, len(args) > 1)
+    
+    def do_export_config(self, arg):
+        args = arg.split()
+        addr = self._arg_as_addr(args[0])
+
+        from .autocontract import export_config
+
+        export_config(addr)
 
     # Cobo safe interaction commands
 
