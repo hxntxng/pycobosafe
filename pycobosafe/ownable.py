@@ -1,6 +1,9 @@
 from brownie import network
 import yaml
 from .utils import ZERO_ADDRESS, load_contract, s32
+import os
+
+BASE = os.path.dirname(__file__)
 
 
 class BaseOwnable(object):
@@ -52,7 +55,7 @@ class BaseOwnable(object):
     def export_config(self, filename=None):
         if filename == None:
             filename = self.contract.name
-        f = open(f'pycobosafe/{filename}_export_config.yaml','w')
+        f = open(f'{BASE}/{filename}_config.yaml','w')
         try:
             owner = self.owner
             pending = self.pending_owner

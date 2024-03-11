@@ -3,7 +3,9 @@ from .ownable import ERC20, BaseOwnable
 from .rolemanager import FlatRoleManager
 from .utils import ETH_ADDRESS, b32, printline, s32
 import yaml
+import os
 
+BASE = os.path.dirname(__file__)
 
 def get_symbol(addr):
     if addr.lower() == ETH_ADDRESS.lower():
@@ -71,7 +73,7 @@ class BaseAuthorizer(BaseOwnable):
         if filename == None:
             filename = self.contract.name
         super().export_config(filename)
-        f = open(f'pycobosafe/{filename}_export_config.yaml','a')
+        f = open(f'{BASE}/{filename}_config.yaml','a')
         yaml.dump({"Caller":str(self.caller), "Flags":self.flag_str, "Type":self.type, "Tag":self.tag}, f)
 
 class ArgusRootAuthorizer(BaseAuthorizer):
@@ -193,7 +195,7 @@ class BaseACL(BaseAuthorizer):
         if filename == None:
             filename = self.contract.name
         super().export_config(filename)
-        f = open(f'pycobosafe/{filename}_export_config.yaml','a')
+        f = open(f'{BASE}/{filename}_config.yaml','a')
         yaml.dump({"Contracts":[str(x) for x in self.contracts]}, f)
 
 class DEXBaseACL(BaseACL):
@@ -241,7 +243,7 @@ class FarmingBaseACL(BaseACL):
         if filename == None:
             filename = self.contract.name
         super().export_config(filename)
-        f = open(f'pycobosafe/{filename}_export_config.yaml','a')
+        f = open(f'{BASE}/{filename}_config.yaml','a')
         yaml.dump({"Whitelist IDs":[int(x) for x in self.whitelist_ids], "Whitelist addresses":[str(x) for x in self.whitelist_addresses]}, f)
 
 class StargateWithdrawAuthorizer(FarmingBaseACL):
@@ -252,5 +254,5 @@ class StargateWithdrawAuthorizer(FarmingBaseACL):
         if filename == None:
             filename = self.contract.name
         super().export_config(filename)
-        f = open(f'pycobosafe/{filename}_export_config.yaml','a')
+        f = open(f'{BASE}/{filename}_config.yaml','a')
         
