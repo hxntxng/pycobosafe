@@ -228,23 +228,23 @@ class FarmingBaseACL(BaseACL):
 
     @property
     def whitelist_ids(self):
-        return self.contract.getPoolIdWhiteList()
+        return [str(x) for x in self.contract.getPoolIdWhiteList()]
     
     @property
     def whitelist_addresses(self):
-        return self.contract.getPoolAddressWhiteList()
+        return [str(x) for x in self.contract.getPoolAddressWhiteList()]
 
     def dump(self, full=False):
         super().dump(full)
-        print("Whitelist IDs: ", ", ".join(self.whitelist_ids))
-        print("Whitelist addresses: ", ", ".join(self.whitelist_addresses))
+        print("Whitelist IDs:", ", ".join(self.whitelist_ids))
+        print("Whitelist addresses:", ", ".join(self.whitelist_addresses))
 
     def export_config(self, filename=None):
         if filename == None:
             filename = self.contract.name
         super().export_config(filename)
         f = open(f'{BASE}/{filename}_config.yaml','a')
-        yaml.dump({"Whitelist IDs":[int(x) for x in self.whitelist_ids], "Whitelist addresses":[str(x) for x in self.whitelist_addresses]}, f)
+        yaml.dump({"Whitelist IDs":[int(x) for x in self.whitelist_ids], "Whitelist addresses":self.whitelist_addresses}, f)
 
 class StargateWithdrawAuthorizer(FarmingBaseACL):
     def dump(self, full=False):
