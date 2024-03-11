@@ -60,7 +60,7 @@ class BaseOwnable(object):
                 owner = pending
         except Exception:
             pass
-        yaml.dump({"Name":self.name, "Address":self.address, "Version":self.version, "Owner":owner}, f)
+        yaml.dump({"Name":self.name, "Address":self.address, "Version":int(self.version), "Owner":str(owner)}, f)
 
 
 class ERC20(object):

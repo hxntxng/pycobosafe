@@ -72,7 +72,7 @@ class BaseAuthorizer(BaseOwnable):
             filename = self.contract.name
         super().export_config(filename)
         f = open(f'pycobosafe/{filename}_export_config.yaml','a')
-        yaml.dump({"Caller":self.caller, "Flags":self.flag_str, "Type":self.type, "Tag":self.tag}, f)
+        yaml.dump({"Caller":str(self.caller), "Flags":self.flag_str, "Type":self.type, "Tag":self.tag}, f)
 
 class ArgusRootAuthorizer(BaseAuthorizer):
     @property
@@ -194,7 +194,7 @@ class BaseACL(BaseAuthorizer):
             filename = self.contract.name
         super().export_config(filename)
         f = open(f'pycobosafe/{filename}_export_config.yaml','a')
-        yaml.dump({"Contracts":[x for x in self.contracts]}, f)
+        yaml.dump({"Contracts":[str(x) for x in self.contracts]}, f)
 
 class DEXBaseACL(BaseACL):
     TYPE = "DexType"
@@ -242,15 +242,11 @@ class FarmingBaseACL(BaseACL):
             filename = self.contract.name
         super().export_config(filename)
         f = open(f'pycobosafe/{filename}_export_config.yaml','a')
-        yaml.dump({"Whitelist IDs":[x for x in self.whitelist_ids]}, f)
-        yaml.dump({"Whitelist addresses":[x for x in self.whitelist_addresses]}, f)
+        yaml.dump({"Whitelist IDs":[int(x) for x in self.whitelist_ids], "Whitelist addresses":[str(x) for x in self.whitelist_addresses]}, f)
 
 class StargateWithdrawAuthorizer(FarmingBaseACL):
     def dump(self, full=False):
-        pass
-        
-    def import_config(self, filename):
-        super().input(filename)
+        super().dump(full)
 
     def export_config(self, filename=None):
         if filename == None:
