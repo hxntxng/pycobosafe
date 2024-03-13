@@ -5,7 +5,7 @@ from .utils import ETH_ADDRESS, b32, printline, s32
 import yaml
 import os
 
-BASE = os.path.dirname(__file__)
+BASE = os.getcwd()
 
 def get_symbol(addr):
     if addr.lower() == ETH_ADDRESS.lower():

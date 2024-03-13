@@ -269,6 +269,9 @@ class CoboSafeConsole(cmd.Cmd):
         dump(addr, len(args) > 1)
     
     def do_export_config(self, arg):
+        """
+        export_config <address> [<filename>]: Print contract information to config file.
+        """
         args = arg.split()
         addr = self._arg_as_addr(args[0])
 

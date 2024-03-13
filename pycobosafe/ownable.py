@@ -3,7 +3,7 @@ import yaml
 from .utils import ZERO_ADDRESS, load_contract, s32
 import os
 
-BASE = os.path.dirname(__file__)
+BASE = os.getcwd()
 
 
 class BaseOwnable(object):
